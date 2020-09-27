@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Adding Coordinate"
+             x:Class="Digyl.CoordinatesAddPage"
+             BackgroundColor="{StaticResource backgroundColor}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Entry">
+                <Setter Property="ClearButtonVisibility" Value="WhileEditing"/>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="15"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical"
+                     Spacing="0"
+                     Margin="20,0,20,0">
+            <ScrollView VerticalOptions="StartAndExpand">
+                <StackLayout Margin="0,20,0,20"
+                             Spacing="5">
+
+                    <Frame Style="{StaticResource frameStyle}">
+                        <StackLayout Spacing="0"
+                                     Margin="10">
+                            <Label Text="Name"/>
+                            <Entry x:Name="nameEntry"
+                                   Placeholder="Enter Coordinate Name"
+                                   MaxLength="30"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Style="{StaticResource frameStyle}">
+                        <StackLayout Spacing="0"
+                                     Margin="10">
+                            <Label Text="Latitude"/>
+                            <Entry x:Name="latitudeEntry"
+                                   Placeholder="Enter Latitude"
+                                   Keyboard="Numeric"
+                                   MaxLength="10"/>
+                            <Label Text="Longitude"
+                                   Margin="0,5,0,0"/>
+                            <Entry x:Name="longitudeEntry"
+                                   Placeholder="Enter Longitude"
+                                   Keyboard="Numeric"
+                                   MaxLength="10"/>
+                            
+                            <StackLayout Orientation="Horizontal"
+                                         HorizontalOptions="Center"
+                                         Margin="0,10,0,0"
+                                         Spacing="10">
+                                <Label Text="Get Location:"
+                                       VerticalOptions="Center"/>
+                                <ActivityIndicator x:Name="getLocationActivityIndicator"
+                                                   IsRunning="false"
+                                                   IsVisible="false"/>
+                                <Button x:Name="getLocationCurrentButton"
+                                        Text="Current"
+                                        BackgroundColor="#64B5F6"
+                                        VerticalOptions="Center"
+                                        Clicked="OnGetCurrentLocationButtonClicked"/>
+                                <Button x:Name="getLocationSearchButton"
+                                        Text="Search"
+                                        BackgroundColor="#64B5F6"
+                                        VerticalOptions="Center"
+                                        Clicked="OnSearchLocationButtonClicked"/>
+                            </StackLayout>
+                            <Button Text="View On Map"
+                                    Margin="0,5,0,0"
+                                    BackgroundColor="#64B5F6"
+                                    Clicked="OnViewInMapButtonClicked"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Style="{StaticResource frameStyle}">
+                        <StackLayout Spacing="0"
+                                     Margin="10">
+                            <Label Text="Radius"/>
+                            <Entry x:Name="radiusEntry"
+                                   Text="10"
+                                   Placeholder="Enter Radius In Meters"
+                                   Keyboard="Numeric"
+                                   MaxLength="4"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Style="{StaticResource frameStyle}">
+                        <StackLayout Spacing="0"
+                                     Margin="10">
+                            <Label Text="Seconds"/>
+                            <Entry x:Name="secondsEntry"
+                                   Text="Not Implemented Yet"
+                                   Placeholder="Enter Seconds Untill Trigger"
+                                   Keyboard="Numeric"
+                                   MaxLength="20"
+                                   IsReadOnly="true"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Style="{StaticResource frameStyle}">
+                        <StackLayout Spacing="0"
+                                     Margin="10">
+                            <Label Text="Entry Reminder"/>
+                            <Picker x:Name="onEnterPicker"
+                                    Title="Select An Entry Reminder"
+                                    TitleColor="Crimson"/>
+
+                            <Label Text="Exit Reminder"
+                                   Margin="0,5,0,0"/>
+                            <Picker x:Name="onExitPicker"
+                                    Title="Select An Exit Reminder"
+                                    TitleColor="Crimson">
+                            </Picker>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+            
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center"
+                         Margin="0,10,0,10">
+                <Button x:Name="cancelButton"
+                        Text="Cancel"
+                        Clicked="OnCancelButtonClicked"/>
+                <Button x:Name="deleteButton"
+                        Text="Delete"
+                        TextColor="Red"
+                        IsVisible="false"
+                        Clicked="OnDeleteButtonClicked"/>
+                <Button x:Name="addButton"
+                        Text="Add"
+                        Clicked="OnAddButtonClicked"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="History"
+             x:Class="Digyl.HistoryPage"
+             BackgroundColor="{StaticResource backgroundColor}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="filterLabels" TargetType="Label" BasedOn="{StaticResource defaultLableTextColor}">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Expander BackgroundColor="LightGray"
+                      Padding="10">
+                <Expander.Header>
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="Center">
+                        <Image Source="expand.png"
+                               HeightRequest="20">
+                            <Image.Triggers>
+                                <DataTrigger TargetType="Image"
+                                             Binding="{Binding Source={RelativeSource AncestorType={x:Type Expander}}, Path=IsExpanded}"
+                                             Value="True">
+                                    <Setter Property="Source"
+                                            Value="collapse.png" />
+                                </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+                        <Label Text="Filter"
+                               FontAttributes="Bold"
+                               Margin="40,0,40,0"
+                               FontSize="Medium"/>
+                        <Image Source="expand.png"
+                               HeightRequest="20">
+                            <Image.Triggers>
+                                <DataTrigger TargetType="Image"
+                                             Binding="{Binding Source={RelativeSource AncestorType={x:Type Expander}}, Path=IsExpanded}"
+                                             Value="True">
+                                    <Setter Property="Source"
+                                            Value="collapse.png" />
+                                </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+                    </StackLayout>
+                </Expander.Header>
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Type:"
+                               Style="{StaticResource filterLabels}"/>
+                        <Picker x:Name="filterTypePicker"
+                                HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Action:"
+                               Style="{StaticResource filterLabels}"/>
+                        <Picker x:Name="filterActionPicker"
+                                HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Reminder:"
+                               Style="{StaticResource filterLabels}"/>
+                        <Picker x:Name="filterReminderPicker"
+                                HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Response:"
+                               Style="{StaticResource filterLabels}"/>
+                        <Picker x:Name="filterResponsePicker"
+                                HorizontalOptions="FillAndExpand">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>All</x:String>
+                                    <x:String>Good Response</x:String>
+                                    <x:String>No Response</x:String>
+                                    <x:String>Bad Response</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="Center">
+                        <Button Text="Search"
+                                Clicked="OnFilterButtonClicked"/>
+                        <Button Text="Clear"
+                                Clicked="OnFilterClearButtonClicked"/>
+                    </StackLayout>
+                </StackLayout>
+            </Expander>
+            
+            <Label x:Name="nothingLabel"
+                   Text="No history was found."
+                   FontSize="20"
+                   HorizontalOptions="Center"
+                   Margin="50"
+                   IsVisible="false"/>
+            <ListView x:Name="listView"
+                      Margin="20,0,20,0"
+                      HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame Style="{StaticResource frameStyle}"
+                                   Margin="0,5,0,0">
+                                <StackLayout Orientation="Horizontal"
+                                             Spacing="0"
+                                             BackgroundColor="{Binding BoxColor}">
+                                    <StackLayout HorizontalOptions="StartAndExpand"
+                                                 Spacing="0"
+                                                 Padding="10">
+                                        <Label FontSize="20">
+                                            <Label.Text>
+                                                <MultiBinding StringFormat="{}{0} {1}">
+                                                    <Binding Path="Action"/>
+                                                    <Binding Path="Name"/>
+                                                </MultiBinding>
+                                            </Label.Text>
+                                        </Label>
+                                        <Label Text="{Binding TrackedType}"
+                                               FontSize="15"/>
+                                        <Label Text="{Binding ResponceReadable}"
+                                               FontSize="15"/>
+                                        <Label Text="{Binding TimeReadable}"
+                                               FontSize="15"/>
+                                        <Label Text="{Binding TimeDetails}"
+                                               FontSize="15"/>
+                                    </StackLayout>
+
+                                    <Button ImageSource="edit.png"
+                                            CornerRadius="0"
+                                            Clicked="OnButtonClicked"/>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

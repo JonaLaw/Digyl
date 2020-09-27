@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Place Types Details"
+             x:Class="Digyl.PlaceTypesDetailsPage"
+             BackgroundColor="{StaticResource backgroundColor}">
+    <ContentPage.Content>
+        <ListView x:Name="listView"
+                  ItemTapped="OnItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal"
+                                     Spacing="0"
+                                     Padding="20,0,20,0"
+                                     BackgroundColor="White">
+                            <Label Text="{Binding NameReadable}"
+                                   FontSize="20"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="StartAndExpand"/>
+                            <Button Text="His+"
+                                    Clicked="OnAddHistoryButtonClicked"
+                                    IsVisible="{StaticResource historyButtonVisible}"/>
+                            <Label  Text="more"
+                                    FontSize="14"
+                                    FontAttributes="Italic"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"
+                                    WidthRequest="50"
+                                    Margin="10,0,10,0"/>
+                            <BoxView Color="Gray"
+                                         VerticalOptions="Center"
+                                         HeightRequest="35"
+                                         WidthRequest="1"
+                                         Margin="0,0,10,0"/>
+                            <Switch IsToggled="{Binding IsOn}"
+                                    Toggled="OnToggle"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Home"
+             x:Class="Digyl.HomePage"
+             BackgroundColor="{StaticResource backgroundColor}">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="locationTrackingButtons" TargetType="Button">
+                <Setter Property="WidthRequest" Value="75"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="IsEnabled" Value="false"/>
+                <Setter Property="BackgroundColor" Value="White"/>
+            </Style>
+            
+            <Style x:Key="labelTitleStyle" TargetType="Label" BasedOn="{StaticResource defaultLableTextColor}">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="Margin" Value="10"/>
+            </Style>
+            <Style x:Key="activityStackLayout" TargetType="StackLayout">
+                <Setter Property="Spacing" Value="0"/>
+                <Setter Property="BackgroundColor" Value="#40C4FF"/>
+            </Style>
+            <Style x:Key="activityDetailsStackLayout" TargetType="StackLayout">
+                <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
+                <Setter Property="Spacing" Value="0"/>
+                <Setter Property="Padding" Value="10"/>
+            </Style>
+
+            <Style x:Key="activityNameLabel" TargetType="Label" BasedOn="{StaticResource defaultLableTextColor}">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="Margin" Value="10,10,0,0"/>
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
+            <Style x:Key="activityTimeLabel" TargetType="Label" BasedOn="{StaticResource defaultLableTextColor}">
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="Margin" Value="10,0,0,5"/>
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
+
+            <Style x:Key="recponseStackLayout" TargetType="StackLayout">
+                <Setter Property="Orientation" Value="Horizontal"/>
+                <Setter Property="Spacing" Value="0"/>
+                <Setter Property="HeightRequest" Value="75"/>
+            </Style>
+            <Style x:Key="actionArrowImage" TargetType="Image">
+                <Setter Property="HeightRequest" Value="40"/>
+                <Setter Property="Margin" Value="10,0,0,0"/>
+                <Setter Property="Source" Value="arrow.png"/>
+            </Style>
+            <Style x:Key="actionImage" TargetType="Image">
+                <Setter Property="HeightRequest" Value="40"/>
+                <Setter Property="Source" Value="action.png"/>
+            </Style>
+            <Style x:Key="actionBoxView" TargetType="BoxView">
+                <Setter Property="Color" Value="Black"/>
+                <Setter Property="HeightRequest" Value="10"/>
+                <Setter Property="WidthRequest" Value="1"/>
+                <Setter Property="Margin" Value="10,0,10,0"/>
+            </Style>
+            <Style x:Key="reminderHandsImage" TargetType="Image">
+                <Setter Property="Source" Value="hands.png"/>
+                <Setter Property="HeightRequest" Value="40"/>
+            </Style>
+            <Style x:Key="reminderMaskImage" TargetType="Image">
+                <Setter Property="Source" Value="mask.png"/>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="Margin" Value="0,0,0,-10"/>
+            </Style>
+
+            <Style x:Key="activityButtonStack" TargetType="StackLayout">
+                <Setter Property="Orientation" Value="Horizontal"/>
+                <Setter Property="Spacing" Value="0"/>
+                <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
+            </Style>
+
+            <Style x:Key="activityButtons" TargetType="Button">
+                <Setter Property="CornerRadius" Value="0"/>
+                <Setter Property="WidthRequest" Value="75"/>
+                <Setter Property="BackgroundColor" Value="Gray"/>
+            </Style>
+            <Style x:Key="activityYesButtons" TargetType="Button" BasedOn="{StaticResource activityButtons}">
+                <!--<Setter Property="ImageSource" Value="yes.png"/>-->
+                <Setter Property="BackgroundColor" Value="{StaticResource goodColor}"/>
+            </Style>
+            <Style x:Key="activityNoButtons" TargetType="Button" BasedOn="{StaticResource activityButtons}">
+                <!--<Setter Property="ImageSource" Value="no.png"/>-->
+                <Setter Property="BackgroundColor" Value="{StaticResource badColor}"/>
+            </Style>
+
+            <Style x:Key="ratingStackLayout" TargetType="StackLayout">
+                <Setter Property="Orientation" Value="Horizontal"/>
+                <Setter Property="Padding" Value="50,5,50,5"/>
+            </Style>
+            <Style x:Key="ratingsLabel" TargetType="Label" BasedOn="{StaticResource defaultLableTextColor}">
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
+            <Style x:Key="ratingsNameLabel" TargetType="Label" BasedOn="{StaticResource ratingsLabel}">
+                <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <ScrollView Padding="0,0,0,20">
+            <StackLayout Margin="20"
+                         Spacing="10">
+
+                <Frame Style="{StaticResource frameStyle}">
+                    <StackLayout Orientation="Horizontal" Spacing="0">
+                        <Label Text="Location Tracking"
+                               Style="{StaticResource labelTitleStyle}"
+                               HorizontalOptions="StartAndExpand"/>
+                        <Button x:Name="ltTurnOnButton"
+                                Text="On"
+                                TextColor="LimeGreen"
+                                Clicked="LocationTrackingTurnOnButtonClicked"
+                                Style="{StaticResource locationTrackingButtons}"/>
+                        <Button x:Name="ltTurnOffButton"
+                                Text="Off"
+                                TextColor="Red"
+                                Clicked="LocationTrackingTurnOffButtonClicked"
+                                Style="{StaticResource locationTrackingButtons}"/>
+                    </StackLayout>
+                </Frame>
+                
+                <Frame Style="{StaticResource frameStyle}">
+                    <StackLayout x:Name="latestHistory"
+                                 Spacing="0">
+                        <Label Text="Last Activity"
+                               Style="{StaticResource labelTitleStyle}"/>
+                        
+                        <Frame x:Name="latestHistoryNone"
+                               Style="{StaticResource frameStyle}"
+                               IsVisible="false">
+                            <StackLayout BackgroundColor="#40C4FF"
+                                         Padding="10">
+                                <Label Text="No Activities Recorded"
+                                       FontSize="20"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Center"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame x:Name="latestHistoryPresent" 
+                               Style="{StaticResource frameStyle}">
+                            <StackLayout Style="{StaticResource activityStackLayout}">
+                                <Label x:Name="latestHistoryName"
+                                       Style="{StaticResource activityNameLabel}"/>
+                                <Label x:Name="latestHistoryTimeReadable"
+                                       Style="{StaticResource activityTimeLabel}"/>
+                                <!--<BoxView Color="Black"
+                                         HeightRequest="1"/>-->
+                                <StackLayout x:Name="latestHistoryBox"
+                                             Style="{StaticResource recponseStackLayout}">
+                                    <Image x:Name="latestHistoryActionArrowImage"
+                                           Style="{StaticResource actionArrowImage}"/>
+                                    <Image x:Name="latestHistoryActionImage"
+                                           Style="{StaticResource actionImage}"/>
+                                    <BoxView Style="{StaticResource actionBoxView}"/>
+                                    <Image x:Name="latestHistoryReminderHandsImage"
+                                           Style="{StaticResource reminderHandsImage}"/>
+                                    <Image x:Name="latestHistoryReminderMaskImage"
+                                           Style="{StaticResource reminderMaskImage}"/>
+                                    
+                                    <StackLayout Style="{StaticResource activityButtonStack}">
+                                        <Button x:Name="latestHistoryYesButton"
+                                                ImageSource="yes.png"
+                                                Style="{StaticResource activityYesButtons}"
+                                                Clicked="OnHistoryButtonClicked"/>
+                                        <Button x:Name="latestHistoryNoButton"
+                                                ImageSource="no.png"
+                                                Style="{StaticResource activityNoButtons}"
+                                                Clicked="OnHistoryButtonClicked"/>
+                                        <Button x:Name="latestHistoryEditButton"
+                                                ImageSource="edit.png"
+                                                Style="{StaticResource activityButtons}"
+                                                Clicked="OnHistoryButtonClicked"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </Frame>
+
+                <Frame x:Name="latestNoRes"
+                       Style="{StaticResource frameStyle}">
+                    <StackLayout Spacing="0">
+                        <Label x:Name="latestNoResLable"
+                               Style="{StaticResource labelTitleStyle}"/>
+                        
+                        <Frame Style="{StaticResource frameStyle}">
+                            <StackLayout Style="{StaticResource activityStackLayout}">
+                                <Label x:Name="latestNoResName"
+                                       Style="{StaticResource activityNameLabel}"/>
+                                <Label x:Name="latestNoResTimeReadable"
+                                       Style="{StaticResource activityTimeLabel}"/>
+                                <!--<BoxView Color="Black"
+                                         HeightRequest="1"/>-->
+                                <StackLayout x:Name="latestNoResBox"
+                                             Style="{StaticResource recponseStackLayout}">
+
+                                    <Image x:Name="latestNoResActionArrowImage"
+                                           Style="{StaticResource actionArrowImage}"/>
+                                    <Image x:Name="latestNoResActionImage"
+                                           Style="{StaticResource actionImage}"/>
+                                    <BoxView Style="{StaticResource actionBoxView}"/>
+                                    <Image x:Name="latestNoResReminderHandsImage"
+                                           Style="{StaticResource reminderHandsImage}"/>
+                                    <Image x:Name="latestNoResReminderMaskImage"
+                                           Style="{StaticResource reminderMaskImage}"/>
+
+                                    <StackLayout Style="{StaticResource activityButtonStack}">
+                                        <Button x:Name="latestNoResYesButton"
+                                                Style="{StaticResource activityYesButtons}"
+                                                ImageSource="yes.png"
+                                                Clicked="OnHistoryButtonClicked"/>
+                                        <Button x:Name="latestNoResNoButton"
+                                                Style="{StaticResource activityNoButtons}"
+                                                ImageSource="no.png"
+                                                Clicked="OnHistoryButtonClicked"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Style="{StaticResource frameStyle}">
+                    <StackLayout Spacing="0">
+                        <Label Text="Compliance Rating"
+                               Style="{StaticResource labelTitleStyle}"/>
+                        <Label x:Name="standingEncouragement"
+                               FontSize="15"
+                               Margin="10,0,0,5"/>
+                        <Frame Style="{StaticResource frameStyle}">
+                            <StackLayout Spacing="0">
+                                <StackLayout Style="{StaticResource ratingStackLayout}"
+                                             BackgroundColor="{StaticResource goodColor}">
+                                    <Label Text="Good Responce"
+                                           Style="{StaticResource ratingsNameLabel}"/>
+                                    <Label x:Name="historyBreakdownGood"
+                                           Style="{StaticResource ratingsLabel}"/>
+                                </StackLayout>
+                                <StackLayout Style="{StaticResource ratingStackLayout}"
+                                             BackgroundColor="{StaticResource neutralColor}">
+                                    <Label Text="No Responce"
+                                           Style="{StaticResource ratingsNameLabel}"/>
+                                    <Label x:Name="historyBreakdownNeutral"
+                                           Style="{StaticResource ratingsLabel}"/>
+                                </StackLayout>
+                                <StackLayout Style="{StaticResource ratingStackLayout}"
+                                             BackgroundColor="{StaticResource badColor}">
+                                    <Label Text="Bad Responce"
+                                           Style="{StaticResource ratingsNameLabel}"/>
+                                    <Label x:Name="historyBreakdownBad"
+                                           Style="{StaticResource ratingsLabel}"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </Frame>
+
+                <!--<Frame CornerRadius="10"
+                       Padding="0">
+                    <StackLayout Orientation="Vertical"
+                                 Spacing="0">
+                        <Label Text="Tracking"
+                               FontSize="20"
+                               Padding="5"/>
+                        <Frame CornerRadius="10"
+                               Padding="0"
+                               BorderColor="Gray"
+                               BackgroundColor="LightGray">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Location"
+                                       FontSize="20"
+                                       Padding="20,5,0,5"/>
+                                <Switch x:Name="locationSwitch"
+                                        HorizontalOptions="EndAndExpand"
+                                        Margin="0,0,25,0"
+                                        Toggled="OnLocationToggle"/>
+                            </StackLayout>
+                        </Frame>
+                        <Frame CornerRadius="10"
+                               Padding="0"
+                               BorderColor="Gray"
+                               BackgroundColor="LightGray">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Coordinate"
+                                   FontSize="20"
+                                   Padding="40,5,0,5"/>
+                                <Switch x:Name="coordinateSwitch"
+                                        HorizontalOptions="EndAndExpand"
+                                        Margin="0,0,25,0"
+                                        Toggled="OnCoordinateToggle"/>
+                            </StackLayout>
+                        </Frame>
+                        <Frame CornerRadius="10"
+                               Padding="0"
+                               BorderColor="Gray"
+                               BackgroundColor="LightGray">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Category"
+                                       FontSize="20"
+                                       Padding="40,5,0,5"/>
+                                <Switch x:Name="categorySwitch"
+                                        HorizontalOptions="EndAndExpand"
+                                        Margin="0,0,25,0"
+                                        Toggled="OnCategoryToggle"/>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </Frame>-->
+
+                <Frame Style="{StaticResource frameStyle}">
+                    <StackLayout>
+                        <Label Text="Tips and Tricks"
+                               Style="{StaticResource labelTitleStyle}"/>
+                        <Frame Style="{StaticResource frameStyle}"
+                               BackgroundColor="#40C4FF">
+                            <StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Handwashing"
+                                           VerticalOptions="Center"
+                                           FontSize="15"
+                                           Margin="10,0,0,0"/>
+                                    <Image Source="hands.png"
+                                           VerticalOptions="Center"
+                                           HeightRequest="30"/>
+                                    <Button Text="Step List"
+                                            Clicked="OnHandwashingStepListButtonClicked"
+                                            HorizontalOptions="CenterAndExpand"/>
+                                    <Button Text="Video"
+                                            Clicked="OnHandwashingVideoButtonClicked"
+                                            HorizontalOptions="CenterAndExpand"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                <Label Text="Mask Wearing"
+                                       VerticalOptions="Center"
+                                       FontSize="15"
+                                       Margin="10,0,0,0"/>
+                                <Image Source="mask.png"
+                                       VerticalOptions="Center"
+                                       HeightRequest="30"/>
+                                <Button Text="Guidelines"
+                                        Clicked="OnMaskWearingGuidelinesButtonClicked"
+                                        HorizontalOptions="CenterAndExpand"/>
+                                <Button Text="Video"
+                                        Clicked="OnMaskWearingVideoButtonClicked"
+                                        HorizontalOptions="CenterAndExpand"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </Frame>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

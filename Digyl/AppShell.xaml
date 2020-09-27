@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:pages="clr-namespace:Digyl"
+       x:Class="Digyl.AppShell">
+
+    <Shell.FlyoutHeader>
+        <pages:HeaderView/>
+    </Shell.FlyoutHeader>
+
+    <Tab Title="Home" Icon="home.png">
+        <ShellContent ContentTemplate="{DataTemplate pages:HomePage}"/>
+    </Tab>
+    <Tab Title="History" Icon="history.png">
+        <ShellContent ContentTemplate="{DataTemplate pages:HistoryPage}"/>
+    </Tab>
+    <Tab Title="Tracking" Icon="tracking.png">
+        <ShellContent Title="Coordinates" ContentTemplate="{DataTemplate pages:CoordinatesPage}"/>
+        <ShellContent Title="Place Types" ContentTemplate="{DataTemplate pages:PlaceTypesPage}"/>
+    </Tab>
+    <Tab Title="Settings" Icon="settings.png">
+        <ShellContent ContentTemplate="{DataTemplate pages:SettingsPage}"/>
+    </Tab>
+
+</Shell>
