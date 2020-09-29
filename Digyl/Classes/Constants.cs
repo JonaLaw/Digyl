@@ -2,7 +2,7 @@
 {
     public static class Constants
     {
-        public const string apiKey = "AIzaSyCfg_ouJNQFJFLerC8XhhbXAjq0jU3D25E";
+        public const string apiKey = "YOUR_API_KEY_HERE";
 
         public const int SERVICE_RUNNING_NOTIFICATION_ID = 123;
         public const string NOTIFICATION_CHANNEL_ID = "com.company.app.channel";
