@@ -219,7 +219,7 @@ namespace Digyl.Droid.Services
 
             // Get an initial fix on location
             // every x milliseconds, location change every x meter
-            locationManager.RequestLocationUpdates(locationProvider, Constants.locationUpdateMinTime, Constants.locationUpdateDistance, this);
+            locationManager.RequestLocationUpdates(locationProvider, App.Settings.LocationUpdateMinTime, App.Settings.LocationUpdateDistance, this);
 
             Log.Debug(logTag, "Now sending location updates");
         }

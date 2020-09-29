@@ -113,7 +113,7 @@ namespace Digyl
                     requestURL = string.Format("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={0},{1}&radius={2}&type={3}&key={4}",
                         location.Latitude,
                         location.Longitude,
-                        Constants.placeTypeRadius,
+                        App.Settings.PlaceTypeRadius,
                         typesToIncludeURL,
                         Constants.apiKey);
                 }
@@ -122,7 +122,7 @@ namespace Digyl
                     requestURL = string.Format("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={0},{1}&radius={2}&key={3}",
                         location.Latitude,
                         location.Longitude,
-                        Constants.placeTypeRadius,
+                        App.Settings.PlaceTypeRadius,
                         Constants.apiKey);
                 }
 

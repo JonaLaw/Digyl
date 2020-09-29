@@ -8,27 +8,33 @@
              x:Class="Digyl.SettingsPage"
              BackgroundColor="{StaticResource backgroundColor}">
     <ContentPage.Content>
-        <StackLayout Padding="10">
-            <Frame Style="{StaticResource frameStyle}">
-                <StackLayout Orientation="Horizontal"
-                             Spacing="0"
-                             BackgroundColor="LightGray">
-                    <Label Text="Add Manual History"
-                           VerticalOptions="Center"
-                           HorizontalOptions="StartAndExpand"
-                           FontSize="17"
-                           Margin="20,10,0,10"/>
-                    <Switch x:Name="manualHistorySwitch"
-                            Margin="0,0,20,0"
-                            Toggled="OnManualHistoryToggle"/>
-                </StackLayout>
-            </Frame>
-            <Button Text="Test Place Type Detection - Search" Clicked="PlaceTypeDetectionSearch" />
-            <Button Text="Test Place Type Detection - Current" Clicked="PlaceTypeDetectionCurrent" />
-            <Button Text="Test Coordinate Detection - Search" Clicked="CoordinateDetectionSearch" />
-            <Button Text="Test Coordinate Detection - Current" Clicked="CoordinateDetectionCurrent" />
-            <!--<Button Text="Start/Stop Location Service" Clicked="LocationServiceButtonClicked" />-->
-            <Button Text="Reset Databases" Clicked="ClearDataBases" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Margin="10">
+                <Frame Style="{StaticResource frameStyle}">
+                    <StackLayout Orientation="Horizontal"
+                                 Spacing="0"
+                                 BackgroundColor="LightGray">
+                        <Label Text="Add Manual History"
+                               VerticalOptions="Center"
+                               HorizontalOptions="StartAndExpand"
+                               FontSize="17"
+                               Margin="20,10,0,10"/>
+                        <Switch x:Name="manualHistorySwitch"
+                                Margin="0,0,20,0"
+                                Toggled="OnManualHistoryToggle"/>
+                    </StackLayout>
+                </Frame>
+                <Button Text="Test Place Type Detection - Search" Clicked="OnPlaceTypeDetectionSearchButtonClicked" />
+                <Button Text="Test Place Type Detection - Current" Clicked="OnPlaceTypeDetectionCurrentButtonClicked" />
+                <Button Text="Test Coordinate Detection - Search" Clicked="OnCoordinateDetectionSearchButtonClicked" />
+                <Button Text="Test Coordinate Detection - Current" Clicked="OnCoordinateDetectionCurrentButtonClicked" />
+                <Button Text="Edit Location Update MinTime" Clicked="OnEditLocationMinTime" />
+                <Button Text="Edit Location Update MinDistance" Clicked="OnEditLocationMinDistance" />
+                <Button Text="Edit Place Type Radius" Clicked="OnEditPlaceTypeRadius" />
+                <Button Text="Edit Place Type Leave Radius" Clicked="OnEditPlaceTypeLeaveRadius" />
+                <!--<Button Text="Start/Stop Location Service" Clicked="LocationServiceButtonClicked" />-->
+                <Button Text="Reset Databases" Clicked="OnClearDataBasesButtonClicked" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage> 

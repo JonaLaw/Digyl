@@ -67,7 +67,7 @@ namespace Digyl
             {
                 if (trackedPlaceTypeItem != null)
                 {
-                    if (!LocationDetails.IsInLocation(newLocation, startLocation, Constants.placeTypeLeaveRadius))
+                    if (!LocationDetails.IsInLocation(newLocation, startLocation, App.Settings.PlaceTypeLeaveRadius))
                     {
                         List<string> foundPlaceTypes = await LocationDetails.GetNearbyPlaceTypes(newLocation);
 
