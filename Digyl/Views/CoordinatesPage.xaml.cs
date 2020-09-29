@@ -25,10 +25,10 @@ namespace Digyl
             coordinateSettings.IsToggled = App.Settings.CoordinateTrackingEnabled;
 
             List<CoordinateItem> items = await App.Database.GetCoordinatesAsync();
+            listView.ItemsSource = items;
 
             if (items.Any())
             {
-                listView.ItemsSource = items;
                 noCoordinates.IsVisible = false;
             }
             else
