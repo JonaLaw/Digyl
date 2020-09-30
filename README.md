@@ -1,5 +1,5 @@
 # Digyl
-An application for Android and soon iOS that allows users to set reminders for entering or exiting certain locations.  
+An application for Android and soon iOS that allows users to set handwashing and/or mask wearing reminders for entering or exiting certain locations.  
 
 ## Features
 - Responsive Home Page
