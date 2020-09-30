@@ -158,6 +158,7 @@ namespace Digyl
                 {
                     latestNoResName.Text = latestNoResponseItem.TrackedType + ": " + latestNoResponseItem.Name;
                 }
+                else
                 {
                     latestNoResName.Text = latestNoResponseItem.Name;
                 }
