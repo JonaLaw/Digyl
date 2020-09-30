@@ -19,9 +19,9 @@ If the background location tracking is turned on, it should persist throughout a
 Its stability has not been fully tested. If it crashes randomly, try and leave the app open in the background and not close it.  
 
 <p align="left">
- <img src="/Screenshots/home_empty.png" width="300">
- <img src="/Screenshots/home_filled.png" width="300">
- <img src="/Screenshots/notification.png" width="300">
+ <img src="/Screenshots/home_empty.png" width="250">
+ <img src="/Screenshots/home_filled.png" width="250">
+ <img src="/Screenshots/notification.png" width="250">
  </p>
 
 ## Coordinates Pages
