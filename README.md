@@ -1,6 +1,8 @@
 # Digyl
 An application for Android and soon iOS that allows users to set handwashing and/or mask wearing reminders for entering or exiting certain locations.  
 
+[Google Drive Android APK](https://drive.google.com/file/d/1wBiDIg5pfoEf0F44Cr3g0o3Hef1MXO6p/view?usp=sharing)
+
 ## Features
 - Responsive Home Page
 - Customizable coordinates list
