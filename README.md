@@ -44,7 +44,7 @@ The on enter and on exit reminders for each place type can be changed through pr
 The [Place type detection](/Digyl/Classes/LocationDetails.cs) works as follows:
 1. Receive a location update or a manual test request
 2. Make a [Nearby Search Request](https://developers.google.com/places/web-service/search#PlaceSearchRequests) to get all nearby place types around the location
-3. Extract all the place types found in the responce and order them by number of occurrences
+3. Extract all the place types found in the response and order them by number of occurrences
 4. Search our on-device database for place types that are enabled
 5. Return the first one that is found
 
